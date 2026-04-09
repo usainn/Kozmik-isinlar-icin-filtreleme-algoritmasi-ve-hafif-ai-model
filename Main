@@ -1,0 +1,26 @@
+import matplotlib.pyplot as plt
+from astropy.utils.data import get_pkg_data_filename
+from astropy.io import fits
+from model import apply_median_cleaning, detect_cosmic_rays_ai
+
+# 1. Veri Yükleme
+image_file = get_pkg_data_filename('tutorials/FITS-images/HorseHead.fits')
+image_data = fits.getdata(image_file, ext=0)
+
+# 2. Algoritmaları Çalıştırma
+print("İşlem başlatıldı...")
+cleaned = apply_median_cleaning(image_data)
+mask = detect_cosmic_rays_ai(image_data, cleaned)
+
+# 3. Görselleştirme
+plt.figure(figsize=(10, 5))
+plt.subplot(1, 2, 1)
+plt.imshow(image_data, cmap='gray', origin='lower')
+plt.title("Orijinal Görüntü")
+
+plt.subplot(1, 2, 2)
+plt.imshow(mask, cmap='hot', origin='lower')
+plt.title("AI Kozmik Işın Maskesi")
+
+plt.show()
+print("İşlem tamamlandı.")
