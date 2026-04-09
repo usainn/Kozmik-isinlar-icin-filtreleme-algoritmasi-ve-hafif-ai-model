@@ -2,6 +2,10 @@
 Bilimsel çalışmalara destek sağlamak için başlangıç adımı olarak atılmış algoritma + model projesidir. Belirtilen Görsellerdeki ve beklendiği gibi filtreleme adımları başarıyla gerçekleşmiştir.
 
 
+<img width="687" height="636" alt="image" src="https://github.com/user-attachments/assets/cdba6fd8-b683-4cf9-aabe-36aa7f652d1a" />
+<img width="1890" height="592" alt="image" src="https://github.com/user-attachments/assets/eddc9d03-84f6-49ce-9d10-64bc5ff239b1" />
+<img width="1413" height="694" alt="image" src="https://github.com/user-attachments/assets/d1009b64-0824-4167-9b3b-814d4fbbc731" />
+
 
 # Cosmic Ray Detection with Isolation Forest 
 
