@@ -1,0 +1,19 @@
+import numpy as np
+from scipy.ndimage import median_filter
+from sklearn.ensemble import IsolationForest
+
+def apply_median_cleaning(image_data, size=3):
+    """Görüntüdeki parazitleri medyan filtresiyle temizler."""
+    return median_filter(image_data, size=size)
+
+def detect_cosmic_rays_ai(image_data, cleaned_data, contamination=0.001):
+    """Isolation Forest kullanarak kozmik ışınları tespit eder."""
+    diff_data = image_data - cleaned_data
+    X = diff_data.reshape(-1, 1)
+    
+    ai_model = IsolationForest(n_estimators=50, contamination=contamination, random_state=42)
+    predictions = ai_model.fit_predict(X)
+    
+    # -1 olanlar anomali (kozmik ışın), 1 olanlar normal
+    anomaly_map = predictions.reshape(image_data.shape)
+    return (anomaly_map == -1)
